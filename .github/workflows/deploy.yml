@@ -26,6 +26,7 @@ jobs:
                   ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
                     set -e
                     cd /opt/go-app
+                    git config --global --add safe.directory /opt/go-app
                     git pull origin master
                     go build -o app -buildvcs=false
                     sudo systemctl restart goapp.service
