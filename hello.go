@@ -11,5 +11,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
     http.HandleFunc("/", handler)
-    http.ListenAndServe(":80", nil)
+
+    fmt.Println("Starting server...")
+    err := http.ListenAndServe(":80", nil)
+    if err != nil {
+        fmt.Println(err)
+    }
 }
