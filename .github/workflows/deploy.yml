@@ -25,6 +25,7 @@ jobs:
               run: |
                   ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
                     set -e
+                    sudo chown -R $USER:$USER /opt/go-app
                     cd /opt/go-app
                     git config --global --add safe.directory /opt/go-app
                     git pull origin master
